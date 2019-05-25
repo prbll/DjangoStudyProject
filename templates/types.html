@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{% static 'site.css' %}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-pink">
+        <a class="navbar-brand" href="{{ request.scheme }}://{{ request.get_host }}">
+            <img src="/static/logo.png" width="32" height="32" class="d-inline-block align-top" alt=""> Мой университет
+        </a>
+        <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="btn btn-outline-light" href="{{ request.scheme }}://{{ request.get_host }}">На главную</a>
+            </li>
+        </ul>
+        <div class="nav-item">
+                <a class="btn btn-outline-light" href="{{ request.scheme }}://{{ request.get_host }}/admin">Войти</a>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <br>
+    <div style="background: rgba(242, 242, 242, 0.7) !important" class="jumbotron">
+        <table class="table table-striped">
+            <thead>
+            <th scope="col">Категория</th>
+            <th scope="col"></th>
+            </thead>
+            <tbody>
+            {% for type in Types %}
+                <tr>
+                    <td>{{ type.TypeName }}</td>
+                    <td><a class="btn btn-secondary" href="{{ request.scheme }}://{{ request.get_host }}/types/{{ type.Id }}">Материалы</a></td>
+                </tr>
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Атрохов Антон | {% now "jS F Y" %}</p>
+    </div>
+</footer>
+
+
+</body>
+</html>

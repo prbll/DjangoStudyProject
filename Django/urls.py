@@ -22,6 +22,5 @@ urlpatterns = [
     re_path(r'^types/(?P<uuid>[0-9a-f-]+$)', views.entity, name='entity'),
     path('Entities/', views.entities, name='entities'),
     path('Types/', views.types, name='types'),
-    path('', views.index, name='index'),
-    re_path(r'[\S]+', views.index, name='all')
+    path('', views.index, name='index')
 ]
